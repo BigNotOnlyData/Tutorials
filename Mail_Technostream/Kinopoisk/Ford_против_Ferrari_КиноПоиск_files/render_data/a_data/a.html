@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="../../render_data_002/a_data/a_data/adsdk.js"></script>
+<meta charset="UTF-8">
+<meta name="ad.size" content="width=1440,height=250">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>banner</title>
+<!--https://code.createjs.com/createjs-2015.11.26.min.js was saved locally--><script src="a_data/createjs-2015.js"></script>
+<script src="a_data/banner.js"></script>
+<script>
+var canvas, stage, exportRoot, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	var comp=AdobeAn.getComposition("797CE6205A5343A69E43F0F22B704159");
+	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+}
+function handleComplete(evt,comp) {
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.banner();
+	stage = new lib.Stage(canvas);
+	stage.enableMouseOver();
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.setFPS(lib.properties.fps);
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+</script>
+<style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    .banner, .frame, .fon {
+        position: absolute;
+        overflow: hidden;
+        cursor: pointer;
+        width: 100%;
+        height: 250px;
+        z-index: 20;
+    }
+    .frame {
+        pointer-events: none;
+        border: 1px solid #dadada;
+        z-index: 150;
+    }
+    .fon {
+        left: 0px;
+        z-index: 10;
+        background: #FFF;
+    }
+	@media screen and (min-width:1440px) {
+		.banner, .frame, .fon {
+			width: 1440px;
+		}
+	}
+</style></head>
+
+<body>
+<a id="click1_area" href="https://awaps.yandex.net/1/c1/tM%20LHh5Xj%20SDSaIASwlsz30ciJ-Gum620RC6mchaatZk3VijnnYSNGRFRz2FQ_tLYecOdVd6yxs3j9R%20BygGPPuURRvF82kLXaf3limW966l5lsNTT%20UU%204Rj%201_t04Rykq0-R8uulg5%20moXArYUBam4rP7LLfD9l6t4Ia6g832DIoZgthHuhQrHh_tlGbaxwjR-TEnh4TgaDvTucKvcuhkZp0K0tHHQ2iJCZxvMNm3PDFYWs6tM5J%20_tuObp0940zh4YrDd1WVXNIkkX1zsp7wy87VOBn7Hs1hkmYMc2HgFuHqYaDPyk_tWiopc7Mx-4oUiAB-LiJLKEnkq7A4PSG2%2049vpPZp10lYG4COiKr-ehE0pQ7r_tKhiYHtAVkvxenVCqojrR7OmSSs-j5prOhce5r%20tKtR-et4wSncfFCY86XrK0_Fn-Sfma8A_A_.htm" target="_blank">
+	<div class="frame"></div>
+	<div class="banner">
+		<canvas id="canvas" width="850" height="250" style=""></canvas>
+	</div>
+</a>
+<script>
+	document.onload = init();
+	document.getElementById("click1_area").href = yandexHTML5BannerApi.getClickURLNum(1);
+</script>
+
+</body></html>

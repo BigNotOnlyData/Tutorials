@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],[]]);
+//# sourceMappingURL=https://kinopoisk-frontend-internal.s3.mds.yandex.net/kinopoisk/release/_next/static/chunks/3733fcea597a1629615b86885b571567fab60ce4_CSS.37dff8ebba14344d5875.js.map

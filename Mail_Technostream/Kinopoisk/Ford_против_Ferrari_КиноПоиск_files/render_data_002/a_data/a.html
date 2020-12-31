@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="a_data/adsdk.js"></script>
+<meta charset="UTF-8">
+<!-- <meta name="authoring-tool" content="Adobe_Animate_CC"> -->
+<meta name="ad.size" content="width=300,height=600">
+<title>300x600</title>
+<!-- write your code here -->
+<!--https://code.createjs.com/1.0.0/createjs.min.js was saved locally--><script src="a_data/createjs.js"></script>
+<script src="a_data/300x600.js"></script>
+<script>
+var canvas, stage, exportRoot;
+function init() {
+	canvas = document.getElementById("canvas");
+	var comp=AdobeAn.getComposition("530AF78C8A18754FB0ACFF39659DF1FC");
+	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib._300x600();
+	stage = new lib.Stage(canvas);
+	stage.enableMouseOver();
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.framerate = lib.properties.fps;
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+	//Code to support hidpi screens and responsive scaling.
+	AdobeAn.makeResponsive(false,'both',false,1,[canvas]);
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+</script>
+</head>
+<body style="margin:0px;">
+	<a id="click1_area" href="https://awaps.yandex.net/1/c1/tdUfqXkVgNefyJAjh9B3aMMxd-I41235yYIwb4Ixc6VDC6PHQpWH0y3m2Gm-V_tVeoU1W%20UCXx2RhQ3u28FhIx6lKNszmbljMEzmyW7--ddDRxm%20H%20r17GCS53q_tlQw80l8z0qxTRxY-fe-aLl6soxClDDSj5i9llsOSx359n4DDsFS9lwO8RkaH_tq4b5sH5nKP6TmCOsIZboXjDYOm7UXbxf6gCYbCmoIfHzN%20rS1VnlJ3G5-083_t83y8yKQKnvnghUNUYufXgtbMpuw9xLH66SwWX5JB%20f5oxEz2Rz1uIuVjWors_trFWysYbGPiubSe6uv303RWznim-cAF9vVqsS4aTUAET3oLMNBXpuJnVZDw-3_tFyOqAQjPNoml7QQKSFiOJ3OMb6E6-qSkCC45klE2adj9a04Qs4WRvAPWzfjd_N-GXiT2h%200LwPl%202TmgAA_A_.htm" target="_blank">
+		<canvas id="canvas" width="300" height="600" style="display: block; background-color: rgb(255, 255, 255); width: 300px; height: 600px;"></canvas>
+	</a>
+	<div class="bg"></div>
+    <script>
+      document.onload = init();
+   		document.getElementById("click1_area").href = yandexHTML5BannerApi.getClickURLNum(1);
+	</script><div id="preloadjs-container" style="visibility: hidden; position: absolute; height: 10px; width: 10px; overflow: hidden; transform: translate(-10px, -10px);"></div>
+
+</body></html>
