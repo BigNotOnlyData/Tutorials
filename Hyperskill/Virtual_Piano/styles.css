@@ -1,0 +1,85 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: LightSeaGreen;
+    font-family: 'Roboto', sans-serif;
+}
+kbd{
+    /*border: 5px solid aqua;*/
+    display: inline-block;
+    font-size: 24px;
+    text-align: center;
+    font-family: inherit;
+
+}
+
+.container{
+    /*border:2px solid red;*/
+    max-width: 700px;
+    margin: 15% auto;
+    position: relative;
+
+
+}
+.white-keys{
+    display: flex;
+    /*border: 3px solid blue;*/
+}
+
+.letter-white{
+    background: white;
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: 25%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 15px;
+}
+
+.black-keys{
+    /*border: 3px solid yellow;*/
+    position: absolute;
+    top:0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.letter-black{
+    background: black;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 15px;
+    width: 40px;
+
+}
+.key-W{
+    position: relative;
+    left:30px;
+}
+.key-E{
+    position: relative;
+    left:-10px;
+}
+.key-T{
+    position: relative;
+    left:50px;
+}
+.key-Y{
+    position: relative;
+    left:10px;
+}
+.key-U{
+    position: relative;
+    left:-30px;
+}
